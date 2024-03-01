@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tables</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_importmap_tags %>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css"/>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>
+  <script type="text/javascript">
+    jQuery('#customers-datatable').dataTable({
+      "processing": true,
+      "serverSide": true,
+      "ajax": {
+        "url": $('#customers-datatable').data('source')
+      },
+      "pagingType": "full_numbers",
+      "columns": [
+        { "data": "id" },
+        { "data": "name" },
+        { "data": "age" },
+        { "data": "city" },
+        { "data": "gender" }
+      ]
+    });
+  </script>
+
+</html>
